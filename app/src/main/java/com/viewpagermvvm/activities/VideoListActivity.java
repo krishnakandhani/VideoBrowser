@@ -83,13 +83,8 @@ public class VideoListActivity extends AppCompatActivity implements VideoAdapter
             @Override
             public void onItemSelected(RecyclerView recyclerView, View item, final int position) {
                 Log.e("onItemSelected: ", item.toString() + "pos: " + position);
+                mBinding.viewpager.setCurrentItem(position,true);
 
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-//                        mBinding.viewpager.setCurrentItem(position);
-                    }
-                }, 500);
             }
         });
         mBinding.recyclerViewData.setLayoutManager(manager);
@@ -116,11 +111,9 @@ public class VideoListActivity extends AppCompatActivity implements VideoAdapter
 
             @Override
             public void onPageSelected(int position) {
-                mBinding.viewpager.setCurrentItem(position);
-                mVideoAdapter.setSelectedIndex(position);
+//                mBinding.viewpager.setCurrentItem(position);
+//                mVideoAdapter.setSelectedIndex(position);
                 mBinding.recyclerViewData.smoothScrollToPosition(position);
-
-
             }
 
             @Override

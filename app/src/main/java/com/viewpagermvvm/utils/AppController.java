@@ -1,29 +1,28 @@
 package com.viewpagermvvm.utils;
 
 import android.app.Application;
-import androidx.room.Room;
+import android.content.Context;
 
-import com.viewpagermvvm.data.DbConstants;
-import com.viewpagermvvm.data.VideoDatabase;
+import com.danikula.videocache.HttpProxyCacheServer;
 
 public class AppController extends Application {
-//    private VideoDatabase mVideoDatabase;
     private static AppController mAppController = null;
+    private HttpProxyCacheServer proxy;
 
     @Override
     public void onCreate() {
         super.onCreate();
-//        mVideoDatabase = Room.databaseBuilder(getApplicationContext(), VideoDatabase.class, DbConstants.DB_NAME).build();
         mAppController = this;
     }
 
-    public static AppController getAppController() {
-        return mAppController;
+    public static HttpProxyCacheServer getProxy(Context context) {
+        AppController app = (AppController) context.getApplicationContext();
+        return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
     }
 
-//    public VideoDatabase getVideoDatabase() {
-//        return mVideoDatabase;
-//    }
-
-
+    private HttpProxyCacheServer newProxy() {
+        return new HttpProxyCacheServer.Builder(this)
+                .cacheDirectory(Utils.getVideoCacheDir(this))
+                .build();
+    }
 }

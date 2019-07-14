@@ -19,7 +19,7 @@ import java.util.List;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder> {
     private List<VideoItem> mVideoItems;
     private OnVideoItemClickListener mVideoItemClickListenr;
-    private int mSelectedIndex = 0;
+    private int mSelectedIndex = -1;
     private Context mContext;
 
     public VideoAdapter(List<VideoItem> mVideoItems, OnVideoItemClickListener mVideoItemClickListenr) {

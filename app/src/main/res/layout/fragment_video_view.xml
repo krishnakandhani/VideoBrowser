@@ -38,8 +38,7 @@
             <com.marcinmoskala.videoplayview.VideoPlayView
                 android:id="@+id/bigVideoView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:videoUrl="@{model.videoUrl}" />
+                android:layout_height="match_parent" />
         </FrameLayout>
     </LinearLayout>
 </layout>
